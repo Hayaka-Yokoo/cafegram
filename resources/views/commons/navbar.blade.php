@@ -12,13 +12,15 @@
             <ul class="navbar-nav mr-auto"></ul>
             <ul class="navbar-nav">
                 @if(Auth::check())
+                {{-- ユーザ一覧ページへのリンク --}}
+                    <li class="nav-item">{!! link_to_route('users.index', 'Users', [], ['class' => 'nav-link']) !!}</li>
                 {{-- 投稿ページへのリンク --}}
-                <li class="nav-item"><a href="#" class="nav-link">+投稿する</a></li>
+                    {!! link_to_route('cafeposts.create', '＋投稿する', [], ['class' => 'nav-link']) !!}
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
                     <ul class="dropdown-menu dropdown-menu-right">
                         {{-- ユーザ詳細のページへのリンク --}}
-                        <li class="dropdown-item"><a href="#">マイページ</a></li>
+                        <li class="dropdown-item">{!! link_to_route('users.show', 'マイページ', ['user' => Auth::id()]) !!}</li>
                         <li class="dropdown-divider"></li>
                         {{-- ログアウトへのリンク --}}
                         <li class="dropdown-item">{!! link_to_route('logout.get', 'ログアウト') !!}</li>

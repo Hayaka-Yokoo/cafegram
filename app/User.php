@@ -36,4 +36,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    /**
+     * このユーザが所有する投稿（Cafepostモデルとの関係を定義）
+     */
+    public function cafeposts()
+    {
+        return $this->hasMany(Cafepost::class);
+    }
+    
+    /**
+     * このユーザに関するモデルの件数をロードする
+     */
+    public function loadRelationshipCounts()
+    {
+        $this->loadCount('cafeposts');
+    }
 }
