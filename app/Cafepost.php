@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cafepost extends Model
 {
-    protected $fillable = ['store_name', 'category_name', 'img', 'title', 'address', 'hour', 'comment'];
+    protected $fillable = ['store_name', 'category[]', 'img', 'title', 'address', 'hour', 'comment'];
     /**
      * この投稿を所有するユーザ（Userモデルとの関係を定義)
      */
@@ -20,14 +20,14 @@ class Cafepost extends Model
      */
     public function categories()
     {
-        return $this->belongsToMany(Cafepost::class, 'cafe_category', cafepost_id, category_id);
+        return $this->belongsToMany(Cafepost::class, 'cafe_category', 'cafepost_id', 'category_id')->withTimestamps();
     }
     /**
      * カテゴリーに属する投稿（Cafepostモデルとの関係を定義）
      */
     public function cafeposts()
     {
-        return $this->belongsToMany(Cafepost::class, 'cafe_category', category_id, cafepost_id);
+        return $this->belongsToMany(Cafepost::class, 'cafe_category', 'category_id', 'cafepost_id')->withTimestamps();
     }
     
 }

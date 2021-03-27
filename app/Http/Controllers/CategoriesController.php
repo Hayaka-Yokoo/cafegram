@@ -6,25 +6,17 @@ use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
 {
-    public function index()
-    {
-        $categories = config('const.category');
+    public function store(Request $request){
+        $cafepost = new Cafepost();
         
-        return view('cafeposts.index', [
-            'categories' => $categories,
+        $inputs = $request->validate([
+            'category_id' => 'required',
         ]);
-    }
-
-    public function store()
-    {
-        // バリデーション
-        $request->validate([
-            'category_name' => 'required',
-        ]);
-    }
-
-    public function complete()
-    {
-        return view('categories.complete');
+        
+        $categoryId = $inputs['category_id'];
+        
+        $categoryData = $cafepost->categories()->sync($categoryId, false);
+        
+        return back();
     }
 }

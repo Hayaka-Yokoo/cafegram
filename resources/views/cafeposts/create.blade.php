@@ -22,12 +22,13 @@
             </div>
             
             {{-- カテゴリの選択 --}} 
-            {{--<div class="form-group">
-                {!! Form::label('category', 'カテゴリー：') !!}
+            <div class="form-group">
+                {!! Form::label('category_name', 'カテゴリー：') !!}
                 @foreach ($categories as $key => $category)
-                    <label>{{ Form::checkbox('category[]', $key) }}{{ $category }}</label>
+                    <label>{{ Form::checkbox('category[]', $category->id) }}{{ $category->category_name }}</label>
                 @endforeach
-            </div>--}}
+            </div>
+            {!! Form::close() !!}
             
             <div class="form-group">
                 {!! Form::label('title', '写真タイトル：') !!}

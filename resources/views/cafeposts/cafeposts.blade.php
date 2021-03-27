@@ -1,7 +1,8 @@
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 @if (count($cafeposts) > 0)
     <ul class="list-unstyled">
-        @foreach($cafeposts as $cafepost)
         <div class="card-columns">
+        @foreach($cafeposts as $cafepost)
             <div class="card text-center border-dark mb-3" style="width: 18rem;">
                 <div class="card-header bg-transparent border-dark">{{ $cafepost->store_name }}</div>
                 <img class="card-img-top" src="{{ Storage::disk('s3')->url($cafepost->img) }}" alt="">
@@ -22,9 +23,9 @@
                     </div>
                 </div>
             </div>
+        @endforeach
         </div>
     </ul>
-    @endforeach
     {{-- ページネーションのリンク --}}
     {{ $cafeposts->links() }}
 @endif

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
 use App\Cafepost;
+use App\Category;
 use Storage;
 
 class CafepostsController extends Controller
@@ -17,9 +18,7 @@ class CafepostsController extends Controller
             // 認証済みユーザを取得
             $user = \Auth::user();
             // ユーザの投稿の一覧を作成日時の降順で取得
-           // $cafeposts = $user->cafeposts()->orderBy('created_at', 'desc')->paginate(9);
-            
-            
+            // $cafeposts = $user->cafeposts()->orderBy('created_at', 'desc')->paginate(9);
         }
         
         $cafeposts = Cafepost::paginate(9);
@@ -43,9 +42,12 @@ class CafepostsController extends Controller
     {
         $cafepost = new Cafepost;
         
+        $categories = Category::all();
+
         // 新規投稿ビューを表示
         return view('cafeposts.create', [
             'cafepost' => $cafepost,
+            'categories' => $categories,
         ]);
     }
     
@@ -63,7 +65,7 @@ class CafepostsController extends Controller
         ]);
         
         // 認証済みユーザの要項として作成
-        $request->user()->cafeposts()->create([
+        $data = $request->user()->cafeposts()->create([
             'img' => $request->file,
             'store_name' => $request->store_name,
             'title' => $request->title,
@@ -72,16 +74,36 @@ class CafepostsController extends Controller
             'comment' => $request->comment,
         ]);
         
+        $cafepostId = $data['id'];
+        $cafepost = Cafepost::find($cafepostId);
+        foreach($request->category as $categoryId){
+            $cafepost->categories()->attach($categoryId);
+        }
+        
         // s3に画像を保存
         $file = $request->file('file');
         $path = Storage::disk('s3')->put('/', $file, 'public');
         
         // カラムに画像のパスを保存
-        $request->user()->cafeposts()->update([
+        $cafepost->update([
             'img' => $path
         ]);
         
         // 前のURLへリダイレクトさせる
+        return back();
+    }
+    
+    public function choice(Request $request){
+        $cafepost = new Cafepost();
+        
+        $inputs = $request->validate([
+            'category_id' => 'required',
+        ]);
+        
+        $categoryId = $inputs['category_id'];
+        
+        $categoryData = $cafepost->categories()->sync($categoryId, false);
+        
         return back();
     }
     
