@@ -1,15 +1,12 @@
-@extends('layouts.app')
-
-@section('content')
-    <li class="media">
-        {{-- ユーザのメールアドレスをもとにGravatarを取得して表示 --}}
-        <img class="mr-2 rounded" src="{{ Gravatar::get($user->email, ['size' => 50]) }}" alt="">
-        <div class="media-body">
-            <div>
-                {{ $user->name }}
-            </div>
+<li class="media">
+    {{-- ユーザのメールアドレスをもとにGravatarを取得して表示 --}}
+    <img class="mr-2 rounded" src="{{ Gravatar::get($user->email, ['size' => 50]) }}" alt="">
+    <div class="media-body">
+        <div>
+            {{ $user->name }}
         </div>
-    </li>
+    </div>
+</li>
     {{-- フォロー／アンフォローボタン --}}
     @include('user_follow.follow_button')
     <div>
@@ -36,8 +33,4 @@
             {{-- 行きたいリスト一覧タブ --}}
             <li class="nav-item"><a href="#" class="nav-link">行きたいリスト</a></li>
         </ul>
-        {{-- 投稿一覧 --}}
-        @include('cafeposts.cafeposts')
     </div>
-@endsection
-                

@@ -9,6 +9,13 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ $cafepost->title }}</h5>
                     <p class="card-text">{{ $cafepost->comment }}</p>
+                    <p class="card-text"><small class="text-muted">
+                        {{--@foreach($categories as $category)
+                            @if($cafepost->id == $category->pivot->cafepost_id)
+                                {{ $category->category_name }}
+                            @endif
+                        @endforeach--}}
+                    </small></p>
                     {{-- カフェ詳細ページへ --}}
                     <a href="{{ route('cafeposts.show', ['cafepost' => $cafepost->id]) }}" class="nav-link {{ Request::routeIs('cafeposts.show') ? 'active' : '' }}">
                         もっと見る

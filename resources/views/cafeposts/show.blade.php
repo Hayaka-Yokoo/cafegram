@@ -12,6 +12,11 @@
     <div class="text-center">
         <h5>営業時間   {{ $cafepost->hour }} </h5>
         <h5>住所   {{ $cafepost->address }} </h5>
+        <p><small class="text-muted">
+            @foreach($categories as $category)
+                {{ $category['category_name'] }}
+            @endforeach
+        </small></p>
     </div>
 @endsection
     

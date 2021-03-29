@@ -16,6 +16,14 @@ class Cafepost extends Model
     }
     
     /**
+     * この投稿に関係するモデルの件数をロードする。
+     */
+    public function loadRelationshipCounts()
+    {
+        $this->loadCount('cafeposts');
+    }
+    
+    /**
      * この投稿のカテゴリー（Cafepostモデルとの関係を定義）
      */
     public function categories()

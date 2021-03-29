@@ -14,6 +14,7 @@ class CafepostsController extends Controller
     {
         $data = [];
         $user = null;
+        $categories = null;
         if (\Auth::check()) { // 認証済みの場合
             // 認証済みユーザを取得
             $user = \Auth::user();
@@ -22,10 +23,12 @@ class CafepostsController extends Controller
         }
         
         $cafeposts = Cafepost::paginate(9);
-        
+
+
         $data = [
                 'user' => $user,
                 'cafeposts' => $cafeposts,
+                'categories' => $categories,
             ];
         
         // Welcomeビューでそれらを表示
@@ -73,13 +76,13 @@ class CafepostsController extends Controller
             'hour' => $request->hour,
             'comment' => $request->comment,
         ]);
-        
+     
         $cafepostId = $data['id'];
         $cafepost = Cafepost::find($cafepostId);
         foreach($request->category as $categoryId){
             $cafepost->categories()->attach($categoryId);
         }
-        
+       
         // s3に画像を保存
         $file = $request->file('file');
         $path = Storage::disk('s3')->put('/', $file, 'public');
@@ -93,28 +96,20 @@ class CafepostsController extends Controller
         return back();
     }
     
-    public function choice(Request $request){
-        $cafepost = new Cafepost();
-        
-        $inputs = $request->validate([
-            'category_id' => 'required',
-        ]);
-        
-        $categoryId = $inputs['category_id'];
-        
-        $categoryData = $cafepost->categories()->sync($categoryId, false);
-        
-        return back();
-    }
-    
     public function show($id)
     {
         // idの値で投稿を検索して取得
         $cafepost = Cafepost::findOrFail($id);
+        
+        // 関係するモデルの件数をロード
+        $cafepost->loadRelationshipCounts();
 
+        $categories = $cafepost->categories();
+        
         // 投稿詳細ビューでそれを表示
         return view('cafeposts.show', [
             'cafepost' => $cafepost,
+            'categories' => $categories,
         ]);
     }
     
