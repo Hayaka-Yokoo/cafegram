@@ -9,10 +9,10 @@ class Category extends Model
     protected $fillable = ['cafepost_id', 'category_id'];
     
     /**
-     * このユーザが所有する投稿。（ Cafepostモデルとの関係を定義）
+     * このカテゴリーが所有する投稿。（ Cafepostモデルとの関係を定義）
      */
     public function cafeposts(){
-        return $this->belongsToMany('App\Cafepost', 'cafe_category', 'category_id', 'category_id');
+        return $this->belongsToMany(Cafepost::class, 'cafe_category', 'category_id', 'cafepost_id');
     }
     
 }

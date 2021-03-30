@@ -24,8 +24,13 @@
                     <a href="{{ route('cafeposts.index', ['user' => $user->id]) }}" class="nav-link {{ Request::routeIs('cafepsots.index') ? 'active' : '' }}">
                         人気
                     </a>
+                </li>
                 {{-- おすすめ投稿タブ --}}
-                <li class="flex-sm-fill nav-item"><a href="#" class="nav-link">おすすめ</a></li>
+                <li class="flex-sm-fill nav-item">
+                    <a href="{{ route('cafeposts.index', ['user' => $user->id]) }}" class="nav-link {{ Request::routeIs('cafepsots.index') ? 'active' : '' }}">
+                        おすすめ
+                    </a>
+                </li>
                     
         </div>
     @else

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\User;
+use App\Category;
+use App\CafeCategory;
 
 class UsersController extends Controller
 {
@@ -30,11 +32,20 @@ class UsersController extends Controller
         // ユーザの投稿一覧を作成日時の降順で取得
         $cafeposts = $user->cafeposts()->orderBy('created_at', 'desc')->paginate(9);
 
+        $categories = Category::all();
+        $disCategory = [];
+        foreach($categories as $category) {
+            $disCategory[$category->id] = $category;
+        }
         
+        $cafeCategory = CafeCategory::all();
         // ユーザ詳細ビューでそれを表示
         return view('users.show', [
             'user' => $user,
             'cafeposts' => $cafeposts,
+            'categories' => $categories,
+            'cafeCategory' => $cafeCategory,
+            'disCategory' => $disCategory
         ]);
     }
     
@@ -83,6 +94,38 @@ class UsersController extends Controller
         return view('users.followers', [
             'user' => $user,
             'users' => $followers,
+        ]);
+    }
+    
+    /**
+     * ユーザの行きたいリスト一覧ページを表示するアクション
+     */
+    public function favorites($id)
+    {
+        // idの値でユーザを検索して取得
+        $user = User::findOrFail($id);
+
+        // 関係するモデルの件数をロード
+        $user->loadRelationshipCounts();
+        
+        // ユーザの行きたいリスト一覧を取得
+        $cafeposts = $user->favorites()->paginate(10);
+        
+        $categories = Category::all();
+        $disCategory = [];
+        foreach($categories as $category) {
+            $disCategory[$category->id] = $category;
+        }
+        
+        $cafeCategory = CafeCategory::all();
+        
+        // 行きたいリスト一覧ビューでそれらを表示
+        return view('users.favorites', [
+            'user' => $user,
+            'cafeposts' => $cafeposts,
+            'categories' => $categories,
+            'cafeCategory' => $cafeCategory,
+            'disCategory' => $disCategory
         ]);
     }
 }

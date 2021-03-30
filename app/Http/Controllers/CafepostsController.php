@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
 use App\Cafepost;
 use App\Category;
+use App\CafeCategory;
 use Storage;
 
 class CafepostsController extends Controller
@@ -14,21 +15,29 @@ class CafepostsController extends Controller
     {
         $data = [];
         $user = null;
-        $categories = null;
+        
         if (\Auth::check()) { // 認証済みの場合
             // 認証済みユーザを取得
             $user = \Auth::user();
             // ユーザの投稿の一覧を作成日時の降順で取得
-            // $cafeposts = $user->cafeposts()->orderBy('created_at', 'desc')->paginate(9);
+            $cafeposts = $user->feed_cafeposts()->orderBy('created_at', 'desc')->paginate(9);
         }
         
-        $cafeposts = Cafepost::paginate(9);
-
+        //$cafeposts = Cafepost::paginate(9);
+        $categories = Category::all();
+        $disCategory = [];
+        foreach($categories as $category) {
+            $disCategory[$category->id] = $category;
+        }
+        
+        $cafeCategory = CafeCategory::all();
 
         $data = [
                 'user' => $user,
                 'cafeposts' => $cafeposts,
                 'categories' => $categories,
+                'cafeCategory' => $cafeCategory,
+                'disCategory' => $disCategory
             ];
         
         // Welcomeビューでそれらを表示
@@ -104,12 +113,22 @@ class CafepostsController extends Controller
         // 関係するモデルの件数をロード
         $cafepost->loadRelationshipCounts();
 
-        $categories = $cafepost->categories();
+        //$categories = $cafepost->categories()->get();
+        
+        $categories = Category::all();
+        $disCategory = [];
+        foreach($categories as $category) {
+            $disCategory[$category->id] = $category;
+        }
+        
+        $cafeCategory = CafeCategory::all();
         
         // 投稿詳細ビューでそれを表示
         return view('cafeposts.show', [
             'cafepost' => $cafepost,
             'categories' => $categories,
+            'cafeCategory' => $cafeCategory,
+            'disCategory' => $disCategory
         ]);
     }
     

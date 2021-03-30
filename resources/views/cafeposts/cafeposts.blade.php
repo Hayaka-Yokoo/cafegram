@@ -4,17 +4,21 @@
         <div class="card-columns">
         @foreach($cafeposts as $cafepost)
             <div class="card text-center border-dark mb-3" style="width: 18rem;">
-                <div class="card-header bg-transparent border-dark">{{ $cafepost->store_name }}</div>
+                <div class="card-header bg-transparent border-dark">
+                    {{ $cafepost->store_name }}
+                    {{-- お気に入り追加ボタンのフォーム --}}
+                    @include('favorite.favorite_button')
+                </div>
                 <img class="card-img-top" src="{{ Storage::disk('s3')->url($cafepost->img) }}" alt="">
                 <div class="card-body">
                     <h5 class="card-title">{{ $cafepost->title }}</h5>
                     <p class="card-text">{{ $cafepost->comment }}</p>
                     <p class="card-text"><small class="text-muted">
-                        {{--@foreach($categories as $category)
-                            @if($cafepost->id == $category->pivot->cafepost_id)
-                                {{ $category->category_name }}
+                        @foreach($cafeCategory as $item)
+                            @if($item->cafepost_id == $cafepost->id)
+                                #{{ $disCategory[$item->category_id]->category_name }}
                             @endif
-                        @endforeach--}}
+                        @endforeach
                     </small></p>
                     {{-- カフェ詳細ページへ --}}
                     <a href="{{ route('cafeposts.show', ['cafepost' => $cafepost->id]) }}" class="nav-link {{ Request::routeIs('cafeposts.show') ? 'active' : '' }}">

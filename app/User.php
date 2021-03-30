@@ -50,7 +50,7 @@ class User extends Authenticatable
      */
     public function loadRelationshipCounts()
     {
-        $this->loadCount(['cafeposts', 'followings', 'followers']);
+        $this->loadCount(['cafeposts', 'followings', 'followers', 'favorites']);
     }
     
     /**
@@ -125,5 +125,68 @@ class User extends Authenticatable
     {
         // フォロー中ユーザの中に $userIdのものが存在するか
         return $this->followings()->where('follow_id', $userId)->exists();
+    }
+    
+    public function favorites()
+    {
+        return $this->belongsToMany(Cafepost::class, 'favorites', 'user_id', 'cafepost_id');
+    }
+    
+    /**
+      * $cafepostIdで指定された投稿を行きたいリストりに追加する。
+      */
+      public function favorite($cafepostId)
+      {
+          // すでにお気に入りに追加しているかの確認
+          $exist = $this->is_favorite($cafepostId);
+          
+          if($exist){
+              // すでに追加していれば何もしない
+              return false;
+          }else{
+              // 未追加であれば追加する
+              $this->favorites()->attach($cafepostId);
+              return true;
+          }
+      }
+      
+      /**
+      * $cafepostIdで指定された投稿を行きたいリストから削除する。
+      */
+      public function unfavorite($cafepostId)
+      {
+          // すでにお気に入りに追加しているかの確認
+          $exist = $this->is_favorite($cafepostId);
+          
+          if($exist){
+              // すでに追加していれば削除する
+              $this->favorites()->detach($cafepostId);
+              return true;
+          }else{
+              // 未追加であれば何もしない
+              return false;
+          }
+      }
+      
+      /**
+       * 指定された$cafepostIdの投稿をこのユーザがお気に入りに追加しているか調べる。
+       */
+       public function is_favorite($cafepostId)
+       {
+           // 行きたいリストに追加しているものの中に$cafepostIdのものが存在するか
+           return $this->favorites()->where('cafepost_id', $cafepostId)->exists();
+       }
+       
+    /**
+     * このユーザとフォロー中ユーザの投稿に絞り込む。
+     */
+    public function feed_cafeposts()
+    {
+        // このユーザがフォロー中のユーザのidを取得して配列にする
+        $userIds = $this->followings()->pluck('users.id')->toArray();
+        // このユーザのidもその配列に追加
+        $userIds[] = $this->id;
+        // それらのユーザが所有する投稿に絞り込む
+        return Cafepost::whereIn('user_id', $userIds);
     }
 }

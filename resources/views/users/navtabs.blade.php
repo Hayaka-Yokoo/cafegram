@@ -31,6 +31,11 @@
                 </a>
             </li>
             {{-- 行きたいリスト一覧タブ --}}
-            <li class="nav-item"><a href="#" class="nav-link">行きたいリスト</a></li>
+            <li class="nav-item">
+                <a href="{{ route('users.favorites', ['id' => $user->id]) }}" class="nav-link {{ Request::routeIs('users.favorites') ? 'active' : '' }}">
+                    行きたいリスト
+                    <span class="badge badge-secondary">{{ $user->favorites_count }}</span>
+                </a>
+            </li>
         </ul>
     </div>
