@@ -14,8 +14,10 @@
             {{-- マイページへのリンク --}}
                 {!! link_to_route('users.show', 'マイページ', ['user' => Auth::id()], ['class' => 'btn btn-secondary']) !!}
             {{-- 行きたいリストへのリンク --}}
-                <a href="#" class="btn btn-secondary">行きたいリスト</a>
+                {!! link_to_route('users.favorites', '行きたいリスト', ['id' => Auth::id()], ['class' => 'btn btn-secondary']) !!}
+        
             {{-- カテゴリ検索 --}}
+                {!! link_to_route('categories.search', 'カテゴリ検索', [], ['class' => 'btn btn-secondary']) !!}
         </div>
         <div class="row">
             <ul class="nav nav-tabs nav-justified mb-3">
@@ -28,7 +30,7 @@
                 {{-- おすすめ投稿タブ --}}
                 <li class="flex-sm-fill nav-item">
                     <a href="{{ route('cafeposts.index', ['user' => $user->id]) }}" class="nav-link {{ Request::routeIs('cafepsots.index') ? 'active' : '' }}">
-                        おすすめ
+                        タイムライン
                     </a>
                 </li>
                     
@@ -51,5 +53,5 @@
         </div>
     @endif
     {{-- おすすめ投稿一覧 --}}
-    @include('cafeposts.cafeposts')
+    @include('cafeposts.ecafeposts')
 @endsection

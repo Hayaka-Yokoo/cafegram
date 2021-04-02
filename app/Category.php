@@ -15,4 +15,9 @@ class Category extends Model
         return $this->belongsToMany(Cafepost::class, 'cafe_category', 'category_id', 'cafepost_id');
     }
     
+    public function loadRelationshipCounts()
+    {
+        $this->loadCount(['cafeposts']);
+    }
+    
 }

@@ -31,14 +31,6 @@ class Cafepost extends Model
         return $this->belongsToMany(Category::class, 'cafe_category', 'cafepost_id', 'category_id')->withTimestamps();
     }
     
-    /**
-     * カテゴリーに属する投稿（Cafepostモデルとの関係を定義）
-    */
-    public function cafeposts()
-    {
-        return $this->belongsToMany(Cafepost::class, 'cafe_category', 'category_id', 'cafepost_id')->withTimestamps();
-    }
-    
     public function favorite_users()
     {
         return $this->belongsToMany(User::class, 'favorites', 'cafepost_id', 'user_id');

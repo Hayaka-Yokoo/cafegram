@@ -39,4 +39,7 @@ Route::group(['middleware' => ['auth']], function(){
     });
     
     Route::resource('cafeposts', 'CafepostsController');
+    Route::get('show', 'CategoriesController@show')->name('categories.show');
+    Route::post('store', 'CategoriesController@store')->name('categories.store');
+    Route::get('search', 'CategoriesController@search')->name('categories.search');
 });
