@@ -10,24 +10,6 @@ use App\CafeCategory;
 
 class CategoriesController extends Controller
 {
-    public function show($categoryId)
-    {
-        dd(categoryId);
-        // idの値でカテゴリーを検索して取得
-        $category = Category::findOrFail($categoryId);
-        
-        // 関係するモデルの件数をロード
-        $category->loadRelationshipCounts();
-
-        $cafeposts = $category->cafeposts()->pagenate(12);
-        
-        // カテゴリー詳細ビューでそれを表示
-        return view('categories.show', [
-            'category' => $category,
-            'cafeposts' => $cafeposts,
-        ]);
-    }
-    
     public function store(Request $request)
     {
         // バリデーション
@@ -61,6 +43,7 @@ class CategoriesController extends Controller
 
 
         return view('categories.show', [
+            'categoryId' =>$categoryId,
             'cafeposts' => $cafeposts,
             'categories' => $categories,
             'cafeCategory' => $cafeCategory,

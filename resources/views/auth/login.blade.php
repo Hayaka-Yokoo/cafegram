@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="text-center">
-        <h1>ログイン</h1>
+        <h1 class="">ログイン</h1>
     </div>
     
     <div class="row">
@@ -19,7 +19,7 @@
                     {!! Form::password('password', ['class' => 'form-control']) !!}
                 </div>
 
-                {!! Form::submit('ログイン', ['class' => 'btn btn-primary btn-block']) !!}
+                {!! Form::submit('ログイン', ['class' => 'btn btn-brown btn-block']) !!}
             {!! Form::close() !!}
             
             {{-- ユーザ登録ページへのリンク --}}

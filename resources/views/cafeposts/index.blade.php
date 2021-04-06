@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    {{-- 投稿一覧 --}}
-    @include('cafeposts.cafposts')
+    @include('cafeposts.navtabs')
+    <div style="margin: 40px 0;">
+        @include('cafeposts.cafeposts')
+    </div>
 @endsection

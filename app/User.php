@@ -133,7 +133,7 @@ class User extends Authenticatable
     }
     
     /**
-      * $cafepostIdで指定された投稿を行きたいリストりに追加する。
+      * $cafepostIdで指定された投稿を行きたいリストに追加する。
       */
       public function favorite($cafepostId)
       {

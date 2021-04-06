@@ -1,14 +1,9 @@
-<link href="https://fonts.googleapis.com/earlyaccess/kokoro.css" rel="stylesheet" />
-@extends('layouts.app')
-
-@section('content')
-    {{-- タイトル --}}
+{{-- タイトル --}}
     <div class="text-center">
         <div class="text-center style2 style3">
             <h1>Cafegram</h1>
         </div>
     </div>
-    @if (Auth::check())
         <div class="flexbox">
             <div class="text-center">
             {{-- 投稿ページへのリンク　--}}
@@ -40,33 +35,3 @@
                     </a>
                 </li>
             </ul>
-            
-        <div style="margin: 40px 0;">
-            @include('cafeposts.cafeposts')
-        </div>
-    @else
-        {{-- 説明文 --}}
-        <div class="text-center wf-kokoro">
-            <h5>
-                おしゃれな内装、かわいいスイーツ、<br>
-                シックな食器にゆったりくつろぎの空間。<br>
-                あなたのカフェ巡り、<br>
-                ぜひみんなでシェアしませんか？<br>
-            </h5>
-        </div>
-        <div class=" style3 flexbox">
-            {{-- ユーザ登録ページへのリンク --}}
-            <div style="margin-right: 15px;">
-            {!! link_to_route('signup.get', '新規登録', [], ['class' => 'btn btn-lg btn-denim']) !!}
-            </div>
-            <div style="margin-right: 15px;">
-            {{-- ログインページへのリンク --}}
-            {!! link_to_route('login', 'ログイン', [], ['class' => 'btn btn-lg btn-denim']) !!}</li>
-            </div>
-        </div>
-        <div class="style4">
-        {{-- おすすめ投稿一覧 --}}
-        @include('cafeposts.ecafeposts')
-        </div>
-    @endif
-@endsection

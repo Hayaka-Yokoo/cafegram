@@ -10,7 +10,6 @@
                 <label>{{ Form::checkbox('category[]', $category->id) }}{{ $category->category_name }}</label>
             @endforeach
         </div>
-        {!! Form::submit('検索', ['class' => 'btn btn-dark btn-block']) !!}
-        {{--{!! link_to_route('categories.show', '検索', [], ['class' => 'btn btn-lg btn-secondary btn-block']) !!}--}}
+        {!! Form::submit('検索', ['class' => 'btn btn-brown btn-block']) !!}
     {!! Form::close() !!}
 @endsection

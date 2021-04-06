@@ -2,7 +2,7 @@
 <header class="mb-4">
         <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #8b4513;">
         {{-- トップページへのリンク --}}
-        <a class="style1" href="/">Cafegram</a>
+        <a class="style1" href="/"><i class="fas fa-mug-hot"></i>Cafegram</a>
         
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
             <span class="navbar-toggler-icon"></span>

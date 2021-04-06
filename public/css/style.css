@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/earlyaccess/hannari.css');
+
 .style1{
     font-family: "筆記体", cursive;
     font-style: oblique;
@@ -9,4 +11,285 @@
     font-style: oblique;
     color: black;
 }
+
+.img01 img {
+    width:100%;
+    height:300px;
+}
+
+.waku02 {
+      position:relative;
+}
+.waku02:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 0px 8px rgba(255,255,255,0.6);
+}
+
+.style3 {
+    margin: 20px;
+}
+
+.style4 {
+    margin-top: 40px;
+}
+
+.card-img-top {
+    max-width: 100%;
+    flex-shrink:0;
+    height: 250px;
+    
+}
+.card-img-top2 {
+    max-width: 100%;
+    flex-shrink:0;
+}
+
+.btn1 {
+  text-align:center;
+}
+
+a1{
+  background:#d2b48c;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:60px;
+  font-size:1.5em;
+  padding:0 1em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+a1:hover{
+  background:#fff;
+  color:#d2b48c;
+}
+a1:before,a1:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #d2b48c;
+  transition:400ms ease all;
+}
+a1:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+a1:hover:before,a1:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+
+.Button-style {
+  font-size: 18px;
+  display: inline-block;
+  padding: 0.5em 1em 0.3em;
+  position: relative;
+  color: #990000;
+  border: solid 2px #990000;
+  border-radius: 5px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.Button-style:before {
+  background-color: #f1e2e2;
+  border-radius: 5px;
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  z-index: -1;
+}
+
+.flexbox{
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: stretch;
+  align-items: stretch;
+  text-align: center;
+  margin: 20px;
+}
+
+.frame {
+	padding: 11px;
+	background-color: #FFFFFF;
+	box-shadow: 0 3px 18px -4px rgba(0, 0, 0, 0.8);
+}
+
+.card-title_06 {
+  font-size: 1.6em;
+  color: #333;
+  font-weight: 700;
+}
+
+.card_06 {
+  position: relative;
+  background: #F8F0D7;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px #ccc;
+  color: #65513f;
+}
+.memo {
+  position: relative;
+  background: #F8F0D7;
+  box-shadow:0 0 5px rgba(0,0,0,.2);
+  color: #65513f;
+  width: 300px;
+}
+
+.card-img_06 {
+  border-radius: 5px 5px 0 0;
+  max-width: 100%;
+  height: auto;
+}
+
+.l-wrapper_06 {
+  margin: auto;
+  width: 100%;
+}
+
+.card-text {
+  color: #777;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.wf-kokoro { font-family: "Kokoro"; }
+
+.style5{
+    margin-top: 8px;
+}
+
+.masking-tape{
+  position: absolute;
+  top: -1em;
+  left: 33%;
+  width:100px;
+  height:30px;
+  background-image: linear-gradient(-45deg, rgba(227,155,140,.4) 25%, transparent 25%, transparent 50%, rgba(227,155,140,.4) 50%, rgba(227,155,140,.4) 75%, transparent 75%, transparent 100%);
+  background-size: 20px 20px;
+  box-shadow:0 0 5px rgba(0,0,0,.2);
+  color: #65513f;
+  transform: rotate(-4deg); 
+}
+
+.card-8 {
+  display: inline-block;
+  padding: 1.6em 0.8em;
+  text-align: center;
+  background: #faebd7;
+  border-radius: 3px;
+}
+
+.btn-circle{
+  display: inline-block;
+  text-decoration: none;
+  background: #f4a460;
+  color: #FFF;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  border-radius: 50%;
+  text-align: center;
+  overflow: hidden;
+  box-shadow: 0px 0px 0px 5px #f4a460;
+  transition: .4s;
+}
+
+.btn-flat-border {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #ffa07a;
+  border: solid 2px #ffa07a;
+  border-radius: 3px;
+  transition: .4s;
+}
+
+.btn-flat-border:hover {
+  background: #ff8c00;
+  color: white;
+}
+
+.btn-circle-flat {
+  display: inline-block;
+  text-decoration: none;
+  background: #f4a460;
+  color: #FFF;
+  width: 67px;
+  height: 67px;
+  line-height: 67px;
+  border-radius: 50%;
+  text-align: center;
+  overflow: hidden;
+  transition: .4s;
+}
+
+.btn-circle-flat:hover {
+  background: #ff8c00
+;
+}
+
+.btn-denim {
+  display: inline-block;
+  max-width: 180px;
+  text-align: left;
+  background-color: #deb887;
+  font-size: 16px;
+  color: #FFF;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 16px;
+  border: 1px dashed #FFF;
+  box-shadow: 0px 0px 0px 5px #deb887;/* box-shadowで外枠を */
+}
+
+.btn-denim:hover {
+  border-style: solid;
+  color: #d3d3d3;
+}
+
+.btn-brown{
+    background-color: #f5deb3;
+    color: #FFF;
+}
+
+.font1{ font-family: "Hannari"; }
+
+.right {
+    margin: 0 0 0 auto;
+}
+
+
+.tab_wrap{width:80%; margin:80px auto;}
+input[type="radio"]{display:none;}
+.tab_area{font-size:0; margin:0 10px;}
+.tab_area label{width:150px; margin:0 5px; display:inline-block; padding:12px 0; color:#999; background:#ddd; text-align:center; font-size:13px; cursor:pointer; transition:ease 0.2s opacity;}
+.tab_area label:hover{opacity:0.5;}
+.panel_area{background:#fff;}
+.tab_panel{width:100%; padding:80px 0; display:none;}
+.tab_panel p{font-size:14px; letter-spacing:1px; text-align:center;}
+
+#tab1:checked ~ .tab_area .tab1_label{background:#fff; color:#000;}
+#tab1:checked ~ .panel_area #panel1{display:block;}
+#tab2:checked ~ .tab_area .tab2_label{background:#fff; color:#000;}
+#tab2:checked ~ .panel_area #panel2{display:block;}
+#tab3:checked ~ .tab_area .tab3_label{background:#fff; color:#000;}
+#tab3:checked ~ .panel_area #panel3{display:block;}
 

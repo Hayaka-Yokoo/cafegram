@@ -3,14 +3,14 @@
     <ul class="list-unstyled">
         <div class="card-columns">
         @foreach($cafeposts as $cafepost)
-            <div class="card text-center border-dark mb-3" style="width: 18rem;">
-                <div class="card-header bg-transparent border-dark">
-                    {{ $cafepost->store_name }}
-                    {{-- お気に入り追加ボタンのフォーム --}}
-                    @include('favorite.favorite_button')
+        <div class="l-wrapper_06">
+            <div class="card  card_06 mb-3" style="width: 300px;">
+                <div class="frame">
+                    <span class="masking-tape"></span>
+                    <img class="card-img-top" src="{{ Storage::disk('s3')->url($cafepost->img) }}" alt="">
                 </div>
-                <img class="card-img-top" src="{{ Storage::disk('s3')->url($cafepost->img) }}" alt="">
                 <div class="card-body">
+                    <p class="card-title_06">{{ $cafepost->store_name }}</p>
                     <h5 class="card-title">{{ $cafepost->title }}</h5>
                     <p class="card-text">{{ $cafepost->comment }}</p>
                     <p class="card-text"><small class="text-muted">
@@ -21,19 +21,25 @@
                         @endforeach
                     </small></p>
                     {{-- カフェ詳細ページへ --}}
-                    <a href="{{ route('cafeposts.show', ['cafepost' => $cafepost->id]) }}" class="nav-link {{ Request::routeIs('cafeposts.show') ? 'active' : '' }}">
-                        もっと見る
-                    </a>
-                    <div>
+                    <div class="d-flex flex-row">
+                        <a href="{{ route('cafeposts.show', ['cafepost' => $cafepost->id]) }}" class="nav-link {{ Request::routeIs('cafeposts.show') ? 'active' : '' }} ">
+                            <a1>more</a1>
+                        </a>
+                        <div class="style5 d-flex flex-row">
+                        {{-- お気に入り追加ボタンのフォーム --}}
+                        @include('favorite.favorite_button')
                         @if (Auth::id() == $cafepost->user_id)
+                            {{-- メッセージ編集ページへのリンク --}}
+                            <a href="{{ route('cafeposts.edit', ['cafepost' => $cafepost->id]) }}" class="btn"><i class="fas fa-edit"></i></a>
                             {{-- 投稿削除ボタンのフォーム --}}
                             {!! Form::open(['route' => ['cafeposts.destroy', $cafepost->id], 'method' => 'delete']) !!}
-                                {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
+                                {!! Form::button('<i class="fas fa-trash-alt"></i>', ['class' => "btn", 'type' => 'submit']) !!}
                             {!! Form::close() !!}
                         @endif
-                    </div>
+                        </div>
                 </div>
             </div>
+        </div>
         @endforeach
         </div>
     </ul>

@@ -39,6 +39,8 @@ Route::group(['middleware' => ['auth']], function(){
     });
     
     Route::resource('cafeposts', 'CafepostsController');
+    Route::get('popular', 'CafepostsController@popular')->name('cafeposts.popular');
+    Route::get('post', 'CafepostsController@post')->name('cafeposts.post');
     Route::get('show', 'CategoriesController@show')->name('categories.show');
     Route::post('store', 'CategoriesController@store')->name('categories.store');
     Route::get('search', 'CategoriesController@search')->name('categories.search');
