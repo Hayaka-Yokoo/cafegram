@@ -23,24 +23,24 @@
             </div>
         </div>
         
-            <ul class="nav nav-tabs nav-pills nav-fill">
+            <ul class="nav nav-tabs nav-fill">
                 <li class="nav-item">
-                    <a href="{{ route('cafeposts.index') }}" class="nav-link {{ Request::routeIs('cafeposts.index') ? 'active' : '' }}">
+                    <a href="{{ route('cafeposts.index') }}" class="nav-link {{ Request::routeIs('cafeposts.index') ? 'active' : '' }}" style="color: #cd853f; background: #f5deb3">
                         タイムライン
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('cafeposts.popular') }}" class="nav-link {{ Request::routeIs('cafeposts.popular') ? 'active' : '' }}">
+                    <a href="{{ route('cafeposts.popular') }}" class="nav-link {{ Request::routeIs('cafeposts.popular') ? 'active' : '' }}" style="color: #cd853f">
                         人気
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('cafeposts.post') }}" class="nav-link {{ Request::routeIs('cafeposts.post') ? 'active' : '' }}">
+                    <a href="{{ route('cafeposts.post') }}" class="nav-link {{ Request::routeIs('cafeposts.post') ? 'active' : '' }}" style="color: #cd853f">
                         すべての投稿
                     </a>
                 </li>
             </ul>
-            
+           
         <div style="margin: 40px 0;">
             @include('cafeposts.cafeposts')
         </div>

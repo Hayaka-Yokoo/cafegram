@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/earlyaccess/hannari.css');
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+1p');
 
+.font2 {
+    font-family: 'M PLUS 1p', sans-serif;
+}
 .style1{
     font-family: "筆記体", cursive;
     font-style: oblique;
@@ -37,6 +41,10 @@
 
 .style4 {
     margin-top: 40px;
+}
+
+.style6 {
+    margin: 30px 450px;
 }
 
 .card-img-top {
@@ -293,3 +301,29 @@ input[type="radio"]{display:none;}
 #tab3:checked ~ .tab_area .tab3_label{background:#fff; color:#000;}
 #tab3:checked ~ .panel_area #panel3{display:block;}
 
+.tab-panels ul {
+      margin: 0;
+      padding: 0;
+  }
+  .tab-panels ul li {
+        list-style-type: none;
+        display: inline-block;
+        background: #f5deb3;
+        margin: 0;
+        padding: .5em 1.5em;
+        border-radius: .5em .5em 0 0;
+        color: #fff;
+        cursor: pointer;
+
+          }
+
+  .tab-panels ul li:hover {
+        color: #fff;
+        background: #f5deb3;
+              }
+
+  .tab-panels ul li:active {
+        color: #fff;
+        background: #f5deb3;
+      
+        }
