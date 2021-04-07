@@ -67,6 +67,8 @@
                                     <a1>more</a1>
                                 </a>
                                 <div class="d-flex flex-row style5">
+                                    {{-- お気に入り追加ボタンのフォーム --}}
+                                    @include('favorite.favorite_button')
                                     @if (Auth::id() == $cafepost->user_id)
                                     {{-- メッセージ編集ページへのリンク --}}
                                         <a href="{{ route('cafeposts.edit', ['cafepost' => $cafepost->id]) }}" class="btn"><i class="fas fa-edit"></i></a>
