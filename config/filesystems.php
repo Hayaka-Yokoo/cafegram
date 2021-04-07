@@ -66,7 +66,7 @@ return [
         
         's3' => [ 'driver' => 's3', 
                 'key' => env('AWS_S3_KEY_ID'), 
-                'secret' => env('AWS_SECRET_ACCESS_KEY'), 
+                'secret' => env('AWS_S3_SECRET'), 
                 'region' => env('AWS_S3_REGION'), 
                 'bucket' => 'cafebacket', 
                 'url' => 'https://s3-ap-northeast-1.amazonaws.com/cafebacket/', 
