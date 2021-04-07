@@ -235,6 +235,20 @@ a1:hover:before,a1:hover:after{
   color: white;
 }
 
+.btn-flat-border2 {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #ffa07a;
+  border: solid 2px #ffa07a;
+  border-radius: 3px;
+  transition: .4s;
+}
+
+.btn-flat-border2:hover {
+  background: #ff8c00;
+  color: white;
+}
 .btn-circle-flat {
   display: inline-block;
   text-decoration: none;

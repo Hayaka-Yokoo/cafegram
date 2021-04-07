@@ -10,7 +10,9 @@
     </li>
 </div>
     {{-- フォロー／アンフォローボタン --}}
-    @include('user_follow.follow_button')
+    <div class="style3">
+        @include('user_follow.follow_btn')
+    </div>
     <div>
         <ul class="nav nav-tabs nav-justified mb-3">
             {{-- ユーザ詳細タブ --}}

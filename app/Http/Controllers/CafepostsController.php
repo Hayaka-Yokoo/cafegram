@@ -197,12 +197,15 @@ class CafepostsController extends Controller
             'hour' => $request->hour,
             'comment' => $request->comment,
         ]);
-     
+        
         $cafepostId = $data['id'];
         $cafepost = Cafepost::find($cafepostId);
-        foreach($request->category as $categoryId){
-            $cafepost->categories()->attach($categoryId);
+        if($request->category != null){
+            foreach($request->category as $categoryId){
+                $cafepost->categories()->attach($categoryId);
+            }
         }
+        
        
         // s3に画像を保存
         $file = $request->file('file');
