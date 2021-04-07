@@ -68,8 +68,8 @@ return [
                 'key' => env('AWS_S3_KEY_ID'), 
                 'secret' => env('AWS_S3_SECRET'), 
                 'region' => env('AWS_S3_REGION'), 
-                'bucket' => 'AWS_S3_BUCKET', 
-                'url' => 'AWS_URL', 
+                'bucket' => env('AWS_S3_BUCKET'), 
+                'url' => env('AWS_URL'), 
                 // 'endpoint' => env('AWS_ENDPOINT') 
         ],
     ],
