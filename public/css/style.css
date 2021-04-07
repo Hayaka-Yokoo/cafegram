@@ -327,3 +327,7 @@ input[type="radio"]{display:none;}
         background: #f5deb3;
       
         }
+        
+.mycheckbox{
+  color: brown;
+}
