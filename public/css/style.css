@@ -147,12 +147,19 @@ a1:hover:before,a1:hover:after{
 }
 
 .card_06 {
+  margin-bottom: 30px;
   position: relative;
   background: #F8F0D7;
   border-radius: 5px;
   box-shadow: 0 2px 5px #ccc;
   color: #65513f;
 }
+
+
+.card-columns .card {
+  margin: 10px 30px;
+}
+ 
 .memo {
   position: relative;
   background: #F8F0D7;

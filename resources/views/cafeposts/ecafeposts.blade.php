@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 @if (count($cafeposts) > 0)
     <ul class="list-unstyled">
-        <div class="card-columns">
+        <div class="card-columns row">
         @foreach($cafeposts as $cafepost)
         <div class="l-wrapper_06">
             <div class="card card_06" style="width: 300px;">

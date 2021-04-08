@@ -43,9 +43,9 @@
     <div style="margin: 40px 0;">
         @if (count($cafeposts) > 0)
             <ul class="list-unstyled">
-                <div class="card-columns">
+                <div class="card-columns row">
                 @foreach($cafeposts as $cafepost)
-                <div class="l-wrapper_06">
+                <div class=" wrapper_06n">
                     <div class="card card_06" style="width: 300px;">
                         <div class="frame">
                             <span class="masking-tape"></span>
