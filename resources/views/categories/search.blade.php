@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>表示したいカテゴリを選択してください</h1>
+    <h1>表示したいカテゴリを選択してください（複数選択可）</h1>
     {!! Form::model($category, ['route' => 'categories.store', "enctype"=>"multipart/form-data"]) !!}
         {{-- カテゴリの選択 --}} 
         <div class="form-group">

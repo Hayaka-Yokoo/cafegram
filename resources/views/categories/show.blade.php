@@ -49,5 +49,7 @@
                 </div>
             </ul>
         </div>
+        @else
+        <h4>該当する投稿はありませんでした。</h4>
         @endif
 @endsection
